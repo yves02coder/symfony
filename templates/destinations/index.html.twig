@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Destinations{% endblock %}
+
+{% block body %}
+    <h1 class="text-center text-success"><b>La QUIETUDE</b></h1>
+
+<div class="row">
+        {% for destination in destinations %}
+            <div class="col-md-4 col-sm-12 mt-2">
+                <div class="card" style="height: 100%;padding: 20px;">
+                <h5 class="card-title text-center"><b class="text-info "> {{ destination.pays }}</b></h5>
+                <img class="card-img-top" src="{{ destination.imagePays }}" alt="Card image cap">
+                <div class="card-body">
+
+                   {# <p class="card-text">{{ destination.descriptionPays }}.</p>#}
+                    <p class="card-text">Hebergement: {{ destination.hebergement }}</p>
+                    {#<p class="card-text">Prix: {{ destination.prix }} €</p>#}
+                    <p class="card-text">Date: {{ destination.date ? destination.date|date('Y-m-d') : '' }}</p>
+                    <p class="card-text">Numero: {{ destination.id }}</p>
+                    <a class="btn btn-outline-warning" href="{{ path('destinations_show', {'id': destination.id}) }}">Consulter</a>
+                    <a class="btn btn-outline-success" href="{{ path('destinations_edit', {'id': destination.id}) }}">Modifier</a>
+                    {#<a class="btn btn-outline-info" href="{{ path('destinations_new') }}">Create new</a>#}
+                </div>
+            </div>
+            </div>
+
+        {% endfor %}
+
+</div>
+
+{% endblock %}
+
